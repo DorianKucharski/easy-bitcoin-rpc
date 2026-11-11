@@ -9,3 +9,12 @@ dist/
 # virtual environments, including the one "uv sync" creates
 .venv/
 venv/
+
+# tool caches
+.mypy_cache/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

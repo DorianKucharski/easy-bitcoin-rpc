@@ -1,6 +1,6 @@
 # Easy Bitcoin RPC
 
-Easy Bitcoin RPC is a simple and easy to use Python library for Bitcoin RPC
+Easy Bitcoin RPC is a simple and easy to use Python library for the Bitcoin Core JSON-RPC interface. It requires Python 3.10+ and depends only on `requests`.
 
 ## Installation
 
@@ -29,11 +29,11 @@ rpc = RPC(wallet_name="Wallet")
 
 ```
 
-Specifing wallet when connection is made is prefered method to get access to wallet, loading wallet after connecting sometimes dosn't work.
+Specifying the wallet when the connection is made is the preferred way to access a wallet; loading a wallet after connecting sometimes doesn't work.
 
 ### RPC methods
 
-RPC object has methods for all Bitcoins RPC calls and those methods are seperated into sections as on [Bitcoin RPC API Reference](https://developer.bitcoin.org/reference/rpc/)
+The RPC object has methods for all Bitcoin RPC calls, and those methods are separated into sections as in the [Bitcoin RPC API Reference](https://developer.bitcoin.org/reference/rpc/)
 
 
 ```python
@@ -140,3 +140,19 @@ except RpcError as error:
 with RPC(user="rpcuser", password="rpcpassword") as rpc:
     print(rpc.blockchain.get_block_count())
 ```
+
+## Development
+
+The project uses [uv](https://docs.astral.sh/uv/). These are the same commands the CI workflow runs:
+
+```bash
+uv sync                                               # install the project and its dev group
+uv run mypy                                           # type-check
+uv run python -m unittest discover -s tests -t tests  # run the tests
+```
+
+The tests run against a mock node (`tests/mock_node.py`), so no running Bitcoin node is needed.
+
+## License
+
+See [LICENSE](LICENSE).
